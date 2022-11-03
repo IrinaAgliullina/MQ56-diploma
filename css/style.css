@@ -443,15 +443,9 @@ a {
     padding-right: 15px;
 }
 
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (max-width: 1199px) {
     .container {
-        max-width: 91%;
-        padding: 0;
-    }
-}
-@media (max-width: 767px) {
-    .container {
-        max-width: 91%;
+        width: 91%;
         padding: 0;
     }
 }
@@ -607,11 +601,18 @@ a {
 }
 
 /*========================================= Main ====================================*/
+
 /*======================================== Trends ====================================*/
 
 .content-wrapper {
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+    .content-wrapper {
+        flex-wrap: wrap;
+    }
 }
 
 .trends {
@@ -632,6 +633,7 @@ a {
 
 .title {
     margin-top: 0;
+    margin-bottom: 28px;
 
     font-family: "OpenSans", "Arial", sans-serif;
     font-weight: bold;
@@ -645,7 +647,7 @@ a {
     display: block;
     content: "";
     width: 66px;
-    margin: 14px auto 22px auto;
+    margin: 14px auto 0 auto;
 
     border-bottom: 3px solid #e1d9bd;
 }
@@ -704,9 +706,10 @@ a {
         width: calc(50% - 1.5px);
         min-height: 245px;
         padding: 15px 20px;
-    }
-    .trend:nth-last-child(n-2) {
         margin-bottom: 3px;
+    }
+    .trend:nth-last-child(-n+2) { /*Отключение внешнего нижнего отступа у 2 последних элементов*/
+        margin-bottom: 0;
     }
 }
 @media (max-width: 767px) {
@@ -752,7 +755,7 @@ a {
     }
 }
 
-.trends-title {
+.trend-post-title {
     margin-top: 7px;
     margin-bottom: 28px;
 
@@ -768,12 +771,19 @@ a {
 /*====================================== Posts ====================================*/
 
 .posts {
-    max-width: 775px;
+    width: 67%;
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .posts {
-        max-width: 392px;
+        width: 56%;
+    }
+}
+
+@media (max-width: 767px) {
+    .posts {
+        width: 100%;
+        margin-bottom: 45px;
     }
 }
 
@@ -784,9 +794,13 @@ a {
     margin-bottom: 60px;
 }
 
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (max-width: 1199px) {
     .article {
         flex-wrap: wrap;
+    }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+    .article {
         padding-bottom: 17px;
     }
     .article:not(:last-child) {
@@ -794,12 +808,21 @@ a {
         border-bottom: 3px solid #eeeeee;
     }
 }
+@media (max-width: 767px) {
+    .article {
+        padding-bottom: 21px;
+        border-bottom: 3px solid #eeeeee;
+    }
+    .article:not(:last-child) {
+        margin-bottom: 35px;
+    }
+}
 
 .post-picture {
     margin-right: 30px;
 }
 
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (max-width: 1199px) {
     .post-picture {
         width: 100%;
         margin-right: 0;
@@ -810,7 +833,7 @@ a {
     width: 100%;
 }
 
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (max-width: 1199px) {
     .post-preview {
         margin-top: 15px;
     }
@@ -937,6 +960,18 @@ a {
     max-width: 270px;
 }
 
+@media (max-width: 767px) {
+    .sidebar {
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 767px) {
+    .sidebar {
+        max-width: 740px;
+    }
+}
+
 .sidebar-title {
     font-size: 14px;
 }
@@ -980,7 +1015,13 @@ a {
     line-height: 1.24;
 }
 
-/*==================================== Search and subscribe forms =====================================*/
+@media (min-width: 768px) and (max-width: 1199px) {
+    .new-post-title {
+        margin-top: 10px;
+    }
+}
+
+/*============================ Search and subscribe forms =============================*/
 
 .form {
     position: relative;
@@ -1125,21 +1166,59 @@ a {
     justify-content: space-between;
 }
 
+@media (max-width: 1199px) {
+    .shop-list {
+        flex-wrap: wrap;
+    }
+}
+
 .shop-list-item {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+@media (min-width: 767px) and (max-width: 1199px) {
+    .shop-list-item {
+        width: calc(50% - 11px);
+        margin-bottom: 28px;
+    }
+    .last-shop-item { /*Отключение внешнего нижнего отступа у последних элементов*/
+        margin-bottom: 0;
+    }
+}
+@media (max-width: 767px) {
+    .shop-list-item {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    .last-shop-item { /*Отключение внешнего нижнего отступа у последних элементов*/
+        margin-bottom: 0;
+    }
+}
+
 .shop-item-info {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    max-width: 347px;
+    width: 372px;
     box-sizing: border-box;
     padding: 50px 20px 25px;
-    margin-top: -30px;
+    margin-top: -34px;
     border: 3px solid #b59f5b;
+}
+
+@media (max-width: 599px),
+       (min-width: 768px) and (max-width: 1199px) {
+    .shop-item-info {
+        width: 100%;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+    .shop-item-info {
+        width: 80%;
+    }
 }
 
 .shop-item-title {
@@ -1150,6 +1229,12 @@ a {
     font-size: 20px;
     line-height: 1.2;
     text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+    .shop-item-title {
+        font-size: 17px;
+    }
 }
 
 .post-text-link {
@@ -1219,12 +1304,27 @@ a {
     margin-bottom: 40px;
 }
 
+@media (max-width: 767px) {
+    .footer {
+        margin-top: 40px;
+        margin-bottom: 45px;
+    }
+}
+
 .social-networks {
     margin-bottom: 70px;
     padding-top: 32px;
     padding-bottom: 32px;
 
     background-color: #f4f7f6;
+}
+
+@media (max-width: 767px) {
+    .social-networks {
+        margin-bottom: 50px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 }
 
 .social-networks-list {
